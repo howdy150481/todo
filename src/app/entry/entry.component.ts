@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry.component.scss']
 })
 export class EntryComponent implements OnInit {
+  checked = false;
 
   constructor() { }
 
