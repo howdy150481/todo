@@ -5,6 +5,20 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-  title = 'todo';
+  todos = [
+    { 
+      title: 'Abwaschen',
+      done: false
+    },
+    {
+      title: 'Gassi gehen',
+      done: true
+    },
+    {
+      title: 'Einkaufen',
+      done: false
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-entry',
@@ -6,11 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry.component.scss']
 })
 export class EntryComponent implements OnInit {
-  checked = false;
+  @Input() todo = {
+    title: 'XX',
+    done: false
+  }
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  updateTodo() {
+    alert('asd');
+  }
 }
