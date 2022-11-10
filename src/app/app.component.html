@@ -1,12 +1,23 @@
 <div class="m-10">
   <div class="mb-3">
     <mat-card>
-      <mat-card-title>ToDo</mat-card-title>
+      <mat-card-title>Aufgaben</mat-card-title>
     </mat-card>
   </div>
-  <div *ngFor="let todo of todos">
-    <app-entry [todo]="todo"></app-entry>
-  </div>  
+  <div *ngFor="let todo of todos; index as index">
+    <app-entry
+      [todo]="todo"
+      [index]="index"
+      (deleteEvent)="deleteItem($event)"
+    ></app-entry>
+  </div>
+  <mat-form-field appearance="standard">
+    <mat-label>Neue Aufgabe</mat-label>
+    <input matInput [(ngModel)]="newTodo" >
+    <button matSuffix mat-icon-button color="primary" (click)="addItem()">
+      <mat-icon>save</mat-icon>
+    </button>
+  </mat-form-field>
 </div>
-
-{{ todos | json }}
+<hr />
+<pre>{{ todos | json }}</pre>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-entry',
@@ -6,8 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./entry.component.scss']
 })
 export class EntryComponent implements OnInit {
+  @Output() deleteEvent = new EventEmitter();
+
+  @Input() index = 0
+
   @Input() todo = {
-    title: 'XX',
+    title: '',
     done: false
   }
 
@@ -16,7 +20,7 @@ export class EntryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateTodo() {
-    alert('asd');
+  deleteTodo() {
+    this.deleteEvent.emit(this.index);
   }
 }

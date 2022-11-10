@@ -8,7 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatInputModule } from '@angular/material/input';
+
 import { EntryComponent } from './entry/entry.component';
 
 @NgModule({
@@ -23,7 +25,8 @@ import { EntryComponent } from './entry/entry.component';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
