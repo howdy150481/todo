@@ -12,11 +12,13 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatInputModule } from '@angular/material/input';
 
 import { EntryComponent } from './entry/entry.component';
+import { AddTodoDialogComponent } from './add-todo-dialog/add-todo-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EntryComponent,
+    AddTodoDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,10 @@ export class AppComponent {
     this.todos.splice(id, 1);
   }
 
+  showAddDialog() {
+    alert('moooh');
+  }
+
   addItem() {
     this.todos.push({
       title: this.newTodo,

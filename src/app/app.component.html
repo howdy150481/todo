@@ -1,7 +1,16 @@
 <div class="m-10">
   <div class="mb-3">
     <mat-card>
-      <mat-card-title>Aufgaben</mat-card-title>
+      <mat-card-title>
+        <div class="grid">
+          <div>Aufgaben</div>
+          <div class="text-end">
+            <button (click)="showAddDialog()" mat-mini-fab color="primary">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-title>
     </mat-card>
   </div>
   <div *ngFor="let todo of todos; index as index">
