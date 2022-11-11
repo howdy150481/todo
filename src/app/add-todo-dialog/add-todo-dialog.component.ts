@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-add-todo-dialog',
@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-todo-dialog.component.scss']
 })
 export class AddTodoDialogComponent implements OnInit {
+  @Output() addItemEvent = new EventEmitter();
+  @Output() closeDialogEvent = new EventEmitter();
+
+  @Input() newTodo: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  addItem(): void {
+    this.addItemEvent.emit(this.newTodo);
+    this.newTodo = '';
+  }
+
+  closeDialog(): void {
+    this.closeDialogEvent.emit();
+  }
 }

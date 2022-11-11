@@ -8,9 +8,8 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class EntryComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter();
 
-  @Input() index = 0
-
-  @Input() todo = {
+  @Input() index: number = 0
+  @Input() todo: object = {
     title: '',
     done: false
   }
@@ -20,7 +19,7 @@ export class EntryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteTodo() {
+  deleteTodo(): void {
     this.deleteEvent.emit(this.index);
   }
 }

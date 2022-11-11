@@ -1,1 +1,11 @@
-<p>add-todo-dialog works!</p>
+<h2 mat-dialog-title>Neue Aufgabe anlegen</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field appearance="standard">
+    <mat-label>Aufgabe</mat-label>
+    <input matInput [(ngModel)]="newTodo" >
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Abbrechen</button>
+  <button mat-button (click)="addItem()">Speichern</button>
+</mat-dialog-actions>

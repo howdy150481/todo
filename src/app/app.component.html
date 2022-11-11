@@ -20,13 +20,6 @@
       (deleteEvent)="deleteItem($event)"
     ></app-entry>
   </div>
-  <mat-form-field appearance="standard">
-    <mat-label>Neue Aufgabe</mat-label>
-    <input matInput [(ngModel)]="newTodo" >
-    <button matSuffix mat-icon-button color="primary" (click)="addItem()">
-      <mat-icon>save</mat-icon>
-    </button>
-  </mat-form-field>
 </div>
 <hr />
 <pre>{{ todos | json }}</pre>

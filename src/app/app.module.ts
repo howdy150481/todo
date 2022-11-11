@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { EntryComponent } from './entry/entry.component';
 import { AddTodoDialogComponent } from './add-todo-dialog/add-todo-dialog.component';
@@ -28,7 +29,8 @@ import { AddTodoDialogComponent } from './add-todo-dialog/add-todo-dialog.compon
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

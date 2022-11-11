@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {AddTodoDialogComponent} from "./add-todo-dialog/add-todo-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,11 @@ import {Component, Input} from '@angular/core';
 })
 
 export class AppComponent {
-  @Input() newTodo = '';
+  constructor(public dialog: MatDialog) {}
 
-  todos = [
+  @Input() newTodo: string = '';
+
+  todos: any = [
     {
       title: 'Abwaschen',
       done: false
@@ -24,19 +28,23 @@ export class AppComponent {
     }
   ]
 
-  deleteItem(id: number) {
+  deleteItem(id: number): void {
     this.todos.splice(id, 1);
   }
 
-  showAddDialog() {
-    alert('moooh');
-  }
+  showAddDialog(): void {
+    const dialogRef = this.dialog.open(AddTodoDialogComponent);
 
-  addItem() {
-    this.todos.push({
-      title: this.newTodo,
-      done: false
+    dialogRef.componentInstance.addItemEvent.subscribe((newTodo: string) => {
+      this.todos.push({
+        title: newTodo,
+        done: false
+      });
+      dialogRef.close();
     });
-    this.newTodo = '';
+
+    dialogRef.componentInstance.closeDialogEvent.subscribe((): void => {
+      dialogRef.close();
+    });
   }
 }
