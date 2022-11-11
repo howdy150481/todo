@@ -13,7 +13,7 @@ export class AppComponent {
 
   @Input() newTodo: string = '';
 
-  todos: any = [
+  todos = [
     {
       title: 'Abwaschen',
       done: false

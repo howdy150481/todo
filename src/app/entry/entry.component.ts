@@ -9,7 +9,7 @@ export class EntryComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter();
 
   @Input() index: number = 0
-  @Input() todo: object = {
+  @Input() todo = {
     title: '',
     done: false
   }
