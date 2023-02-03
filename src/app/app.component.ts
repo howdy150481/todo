@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {AddTodoDialogComponent} from "./add-todo-dialog/add-todo-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -9,36 +10,39 @@ import {MatDialog} from "@angular/material/dialog";
 })
 
 export class AppComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private http: HttpClient) {}
 
   @Input() newTodo: string = '';
+  todos: any[] = [];
 
-  todos = [
-    {
-      title: 'Abwaschen',
-      done: false
-    },
-    {
-      title: 'Gassi gehen',
-      done: true
-    },
-    {
-      title: 'Einkaufen',
-      done: false
-    }
-  ]
+  ngOnInit(): void {
+    this.fetchData();
+  }
+
+  fetchData(): void {
+    this.http.get('http://localhost:3000/todos').subscribe(result => {
+      this.todos = Object.values(result);
+    });
+  }
 
   deleteItem(id: number): void {
-    this.todos.splice(id, 1);
+    this.http.delete('http://localhost:3000/todos/' + id).subscribe(result => {
+      this.todos = Object.values(result);
+    });
+  }
+
+  updateDone(todo: any): void {
+    this.http.put('http://localhost:3000/todos', { id: todo.id, done: todo.done }).subscribe(result => {
+      console.log(result);
+    });
   }
 
   showAddDialog(): void {
     const dialogRef = this.dialog.open(AddTodoDialogComponent);
 
     dialogRef.componentInstance.addItemEvent.subscribe((newTodo: string) => {
-      this.todos.push({
-        title: newTodo,
-        done: false
+      this.http.post('http://localhost:3000/todos', { title: newTodo }).subscribe(result => {
+        this.todos = Object.values(result);
       });
       dialogRef.close();
     });

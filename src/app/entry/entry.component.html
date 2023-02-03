@@ -3,7 +3,7 @@
     <mat-card-content>
       <div class="grid grid-cols-2">
         <div>
-          <mat-checkbox [(ngModel)]="todo.done">{{ todo.title }}</mat-checkbox>
+          <mat-checkbox (click)="updateDone()" [(ngModel)]="todo.done">{{ todo.title }}</mat-checkbox>
         </div>
         <div class="text-right">
             <button (click)="deleteTodo()" mat-mini-fab color="warn">

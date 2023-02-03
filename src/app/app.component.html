@@ -16,10 +16,8 @@
   <div *ngFor="let todo of todos; index as index">
     <app-entry
       [todo]="todo"
-      [index]="index"
       (deleteEvent)="deleteItem($event)"
+      (updateDoneEvent)="updateDone($event)"
     ></app-entry>
   </div>
 </div>
-<hr />
-<pre>{{ todos | json }}</pre>

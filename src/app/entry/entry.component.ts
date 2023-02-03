@@ -1,25 +1,26 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {Todo} from "../types/Todo";
 
 @Component({
   selector: 'app-entry',
   templateUrl: './entry.component.html',
   styleUrls: ['./entry.component.scss']
 })
-export class EntryComponent implements OnInit {
+export class EntryComponent {
   @Output() deleteEvent = new EventEmitter();
+  @Output() updateDoneEvent = new EventEmitter();
 
-  @Input() index: number = 0
-  @Input() todo = {
+  @Input() todo: Todo = {
+    id: 0,
     title: '',
     done: false
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  updateDone(): void {
+    this.updateDoneEvent.emit(this.todo);
   }
 
   deleteTodo(): void {
-    this.deleteEvent.emit(this.index);
+    this.deleteEvent.emit(this.todo.id);
   }
 }
